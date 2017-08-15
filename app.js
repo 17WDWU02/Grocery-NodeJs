@@ -23,9 +23,22 @@ app.get("/products", function(request, response){
 	response.json(data);
 });
 
+
+
 app.get("/about", function(request, response){
 	response.sendFile(path.join(__dirname + '/public/about.html'));
 });
+
+app.get("/products/:term", function(request, response){
+	var term = request.params.term;
+	searchData(response, term);
+});
+
+app.get("/products/search=:term/instock=:instock", function(request, response){
+	var term = request.params.term;
+	var stock = request.params.instock;
+	searchDataInStock(response, term, stock);
+})
 
 app.use(cors());
 
@@ -33,3 +46,49 @@ app.use(cors());
 app.listen(3000);
 
 console.log("Server running on port 3000");
+
+function searchData(response, term){
+	term = term.toLowerCase();
+	var list = data.filter(function(item){
+		var name = item.name.toLowerCase();
+		if(name.indexOf(term) !== -1){
+			return item;
+		}
+	});
+	response.end(JSON.stringify(list));
+};
+
+function searchDataInStock(response, term, stock){
+	term = term.toLowerCase();
+	if(stock == "yes"){
+		var avail = true;
+	} else if(stock == "no"){
+		var avail = false;
+	}
+
+	var list = data.filter(function(item){
+		var name = item.name.toLowerCase();
+		if( (name.indexOf(term) !== -1) && (item.inStock == avail) ){
+			return item;
+		}
+	});
+
+	response.end(JSON.stringify(list));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

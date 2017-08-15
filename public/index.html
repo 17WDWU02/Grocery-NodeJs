@@ -6,9 +6,15 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<h1>Grocery List</h1>
-	<a href="about">Go to About Page</a>
+	<div class="container">
+		<h1>Grocery List</h1>
+		<a href="about">Go to About Page</a>
 
+		<form method="get" action="/" id="form">
+			<input id="search" type="text" class="form-control" placeholder="Search...">
+			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
+	</div>
 	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
