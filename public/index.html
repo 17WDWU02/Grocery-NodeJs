@@ -11,9 +11,30 @@
 		<a href="about">Go to About Page</a>
 
 		<form method="get" action="/" id="form">
-			<input id="search" type="text" class="form-control" placeholder="Search...">
+			<div class="form-group">
+				<input id="search" type="text" class="form-control" placeholder="Search...">
+			</div>
+			<div class="form-group">
+				<label class="radio-inline"><input type="radio" name="optradio" checked value="all">All</label>
+				<label class="radio-inline"><input type="radio" name="optradio" value="yes">In stock</label>
+				<label class="radio-inline"><input type="radio" name="optradio" value="no">Out of Stock</label>
+			</div>
+
 			<button type="submit" class="btn btn-primary">Search</button>
 		</form>
+
+		<table>
+			<thead>
+				<tr>
+					<td><strong>Product Name</strong></td>
+					<td><strong>Product Price</strong></td>
+					<td><strong>In Stock</strong></td>
+				</tr>
+			</thead>
+			<tbody id="tableBody">
+
+			</tbody>
+		</table>
 	</div>
 	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>

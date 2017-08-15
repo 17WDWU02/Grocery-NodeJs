@@ -23,13 +23,11 @@ app.get("/products", function(request, response){
 	response.json(data);
 });
 
-
-
 app.get("/about", function(request, response){
 	response.sendFile(path.join(__dirname + '/public/about.html'));
 });
 
-app.get("/products/:term", function(request, response){
+app.get("/products/search=:term", function(request, response){
 	var term = request.params.term;
 	searchData(response, term);
 });
@@ -75,20 +73,3 @@ function searchDataInStock(response, term, stock){
 
 	response.end(JSON.stringify(list));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
